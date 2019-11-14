@@ -27,7 +27,7 @@ import java.util.List;
 /***
  *
  * @since:oss-server 1.0
- * @author <a href="mailto:xiaoymin@foxmail.com">xiaoymin@foxmail.com</a> 
+ * @author <a href="mailto:xiaoymin@foxmail.com">xiaoymin@foxmail.com</a>
  * 2018/05/30 11:06
  */
 @Configuration
@@ -43,7 +43,7 @@ public class MaterialConfiguration implements WebMvcConfigurer {
 
     @Override
     public void configureMessageConverters(List<HttpMessageConverter<?>> converters) {
-        converters.add(new JsonpMessageConverter());
+        // converters.add(new JsonpMessageConverter());
     }
 
     @Override
@@ -52,8 +52,8 @@ public class MaterialConfiguration implements WebMvcConfigurer {
     }
 
     @Bean
-    public MaterialConfig materialConfig(){
-        MaterialConfigImpl materialConfig=new MaterialConfigImpl();
+    public MaterialConfig materialConfig() {
+        MaterialConfigImpl materialConfig = new MaterialConfigImpl();
         materialConfig.setRootPath(root);
         materialConfig.setInvokingRoot(invokingRoot);
         materialConfig.setPathStyle(pathstyle);
@@ -61,8 +61,8 @@ public class MaterialConfiguration implements WebMvcConfigurer {
     }
 
     @Bean
-    public FilterRegistrationBean  corsFilter(){
-        UrlBasedCorsConfigurationSource source =new UrlBasedCorsConfigurationSource();
+    public FilterRegistrationBean corsFilter() {
+        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         CorsConfiguration config = new CorsConfiguration();
         config.setAllowCredentials(true);
         config.addAllowedOrigin("*");
@@ -75,7 +75,7 @@ public class MaterialConfiguration implements WebMvcConfigurer {
     }
 
     @Bean
-    public GlobalRequestMappingFilter globalRequestMappingFilter(){
+    public GlobalRequestMappingFilter globalRequestMappingFilter() {
         return new GlobalRequestMappingFilter();
     }
 

@@ -1,11 +1,11 @@
 /*
- * Copyright (C) 2017 Zhejiang xiaominfo Technology CO.,LTD.
+ * Copyright (C) 2017 Zhejiang lishiots Technology CO.,LTD.
  * All rights reserved.
- * Official Web Site: http://www.xiaominfo.com.
- * Developer Web Site: http://open.xiaominfo.com.
+ * Official Web Site: http://www.lishiots.com.
+ * Developer Web Site: http://open.lishiots.com.
  */
 
-package com.xiaominfo.oss.domain;
+package com.xiaominfo.oss.sdk.common;
 
 import java.io.Serializable;
 
@@ -15,11 +15,11 @@ import java.io.Serializable;
  * @author <a href="mailto:xiaoymin@foxmail.com">xiaoymin@foxmail.com</a> 
  * 2018/03/19 14:17
  */
-public class RestfulMessage implements Serializable {
+public class OSSClientMessage<T> implements Serializable {
 
     private String code;
     private String message;
-    private Object data;
+    private T data;
 
     public String getCode() {
         return code;
@@ -37,11 +37,11 @@ public class RestfulMessage implements Serializable {
         this.message = message;
     }
 
-    public Object getData() {
+    public T getData() {
         return data;
     }
 
-    public void setData(Object data) {
+    public void setData(T data) {
         this.data = data;
     }
 }

@@ -27,6 +27,24 @@ public class FileBinaryResponse {
      */
     private String store;
 
+    /***
+     * 文件类型
+     */
+    private String objType;
+    /***
+     * 文件原始名称
+     */
+    private String originalName;
+
+    /***
+     * 文件长度
+     */
+    private long byteLength;
+    /***
+     * 字符串显示
+     */
+    private String byteToStr;
+
     public FileBinaryResponse(String id, String url, String store) {
         this.id = id;
         this.url = url;
@@ -55,5 +73,38 @@ public class FileBinaryResponse {
 
     public void setStore(String store) {
         this.store = store;
+    }
+
+
+    public String getObjType() {
+        return objType;
+    }
+
+    public void setObjType(String objType) {
+        this.objType = objType;
+    }
+
+    public String getOriginalName() {
+        return originalName;
+    }
+
+    public void setOriginalName(String originalName) {
+        this.originalName = originalName;
+    }
+
+    public long getByteLength() {
+        return byteLength;
+    }
+
+    public void setByteLength(long byteLength) {
+        this.byteLength = byteLength;
+    }
+
+    public String getByteToStr() {
+        return byteToStr;
+    }
+
+    public void setByteToStr(String byteToStr) {
+        this.byteToStr = byteToStr;
     }
 }

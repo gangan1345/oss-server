@@ -15,9 +15,12 @@ import cn.hutool.core.util.StrUtil;
 import cn.hutool.log.Log;
 import cn.hutool.log.LogFactory;
 import com.google.common.collect.Lists;
-import com.xiaominfo.oss.domain.FileInfo;
 import com.xiaominfo.oss.common.pojo.RestfulMessage;
+import com.xiaominfo.oss.domain.FileInfo;
+import com.xiaominfo.oss.module.model.OSSInformation;
+import com.xiaominfo.oss.service.OSSInformationService;
 import com.xiaominfo.oss.utils.FileUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -46,26 +49,25 @@ public class OSSApplication {
     @Value(value = "${spring.application.name}")
     private String appName;
 
-    @Value(value = "${material.root}")
-    private String root;
+    @Autowired
+    OSSInformationService ossInformationService;
 
-    @Value(value = "${material.invokingRoot}")
-    private String invokeUri;
 
     @GetMapping(value = "/")
     public String index(Model model, @RequestParam(value = "dir",required = false) String dir, HttpServletRequest request){
         log.info("dir:{}",dir);
         List<FileInfo> fileInfos= Lists.newArrayList();
-        File rootFile=new File(root);
+        OSSInformation ossInformation=ossInformationService.queryOne();
+        File rootFile=new File(ossInformation.getRoot());
         log.info(rootFile.getAbsolutePath());
         if (StrUtil.isBlank(dir)){
             //如果是空的话,直接获取当前根目录
-             fileInfos.addAll(getFileInfos(rootFile,rootFile));
+             fileInfos.addAll(getFileInfos(rootFile,rootFile,ossInformation));
         }else{
             //dir不为空
             String dirPath=rootFile.getAbsolutePath()+dir;
             File dirFile=new File(dirPath);
-            fileInfos.addAll(getFileInfos(dirFile,rootFile));
+            fileInfos.addAll(getFileInfos(dirFile,rootFile,ossInformation));
         }
         model.addAttribute("list",fileInfos);
         if (StrUtil.isBlank(appName)){
@@ -121,7 +123,7 @@ public class OSSApplication {
 
 
 
-    private List<FileInfo> getFileInfos(File dirFile,File root){
+    private List<FileInfo> getFileInfos(File dirFile,File root,OSSInformation ossInformation){
         int start=root.getAbsolutePath().length();
         List<FileInfo> fileInfos= Lists.newArrayList();
         File[] files=dirFile.listFiles();
@@ -129,7 +131,7 @@ public class OSSApplication {
             return fileInfos;
         }
         for (File file:files){
-            FileInfo fileInfo=new FileInfo(invokeUri+file.getName(),file.getName()
+            FileInfo fileInfo=new FileInfo(ossInformation.getInvokingRoot()+file.getName(),file.getName()
                     ,DateUtil.date(file.lastModified()).toString(DatePattern.NORM_DATETIME_PATTERN)
                     , FileUtils.byteToString(FileUtils.getFileSize(file)));
             fileInfo.setType(FileUtils.getFileType(file));
@@ -153,7 +155,7 @@ public class OSSApplication {
             }else{
                 String path=file.getAbsolutePath();
                 //截取根路径
-                String url=transSysSpec(invokeUri,path.substring(start));
+                String url=transSysSpec(ossInformation.getInvokingRoot(),path.substring(start));
                 log.info("url:{}",url);
                 fileInfo.setUrl(url);
             }

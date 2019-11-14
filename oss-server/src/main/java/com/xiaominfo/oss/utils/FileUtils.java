@@ -28,6 +28,18 @@ public class FileUtils {
     public static final int GB_SIZE = 1024 * MB_SIZE;
 
 
+    /**
+     * file unmodified
+     * @param file
+     */
+    public static void fileUnModified(File file){
+        if (file!=null){
+            file.setWritable(false);
+            file.setExecutable(false);
+            file.setReadOnly();
+        }
+    }
+
 
     /***
      * 获取文件大小

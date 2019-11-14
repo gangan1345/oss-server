@@ -3,13 +3,11 @@
  * All rights reserved.
  * Official Web Site: http://www.xiaominfo.com.
  * Developer Web Site: http://open.xiaominfo.com.
- */
+ *//*
+
 package com.xiaominfo.oss.config;
 
 import cn.hutool.core.util.StrUtil;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonIOException;
 import org.springframework.http.converter.HttpMessageNotWritableException;
 import org.springframework.http.converter.json.GsonHttpMessageConverter;
 import org.springframework.lang.Nullable;
@@ -21,11 +19,13 @@ import java.io.Reader;
 import java.io.Writer;
 import java.lang.reflect.Type;
 
+*/
 /***
  * GsonJsonpHttpMessageConverter
  * @author <a href="mailto:xiaoymin@foxmail.com">xiaoymin@foxmail.com</a>
  * 2018-5-31 12:48:07
- */
+ *//*
+
 public class JsonpMessageConverter extends GsonHttpMessageConverter {
 	private String jsonPrefix;
 	private String callbackParam="callback";
@@ -83,6 +83,7 @@ public class JsonpMessageConverter extends GsonHttpMessageConverter {
 		this.callbackParam = callbackParam;
 	}
 
- 
+
 
 }
+*/

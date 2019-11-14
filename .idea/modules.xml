@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/oss-server/oss-server.iml" filepath="$PROJECT_DIR$/oss-server/oss-server.iml" />
+      <module fileurl="file://$PROJECT_DIR$/oss-server-parent.iml" filepath="$PROJECT_DIR$/oss-server-parent.iml" />
+      <module fileurl="file://$PROJECT_DIR$/oss-server-sdk-java/oss-server-sdk-java.iml" filepath="$PROJECT_DIR$/oss-server-sdk-java/oss-server-sdk-java.iml" />
+    </modules>
+  </component>
+</project>

@@ -7,12 +7,16 @@
 package com.xiaominfo.oss.service;
 
 import com.baomidou.mybatisplus.service.IService;
+import com.xiaominfo.oss.common.pojo.Pagination;
+import com.xiaominfo.oss.module.entity.OSSMaterialInfoResult;
 import com.xiaominfo.oss.module.model.OSSMaterialInfo;
+
+import java.util.List;
 
 /***
  *
  * @since:cloud-ims 1.0
- * @author <a href="mailto:xiaoymin@foxmail.com">xiaoymin@foxmail.com</a> 
+ * @author <a href="mailto:xiaoymin@foxmail.com">xiaoymin@foxmail.com</a>
  * 2018/06/18 8:54
  */
 public interface OSSMaterialInfoService extends IService<OSSMaterialInfo> {
@@ -21,4 +25,16 @@ public interface OSSMaterialInfoService extends IService<OSSMaterialInfo> {
      * @return
      */
     String queryTotalSpaceByteStr();
+
+    Integer count();
+
+
+    Pagination<OSSMaterialInfoResult> queryByPage(OSSMaterialInfo ossMaterialInfo, Integer current_page, Integer page_size);
+
+    /**
+     * 等待同步的文件
+     *
+     * @param node
+     */
+    List<OSSMaterialInfo> waitSync(String node, String thatNode);
 }

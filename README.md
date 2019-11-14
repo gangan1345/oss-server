@@ -53,7 +53,7 @@ server{
 ```text
 #验证用户名 密码
 oss.security.userName=admin
-oss.security.password=adminA123
+oss.security.password=admin
 ```
 
 ![](static/oss4.png)
@@ -206,6 +206,3 @@ material.invokingRoot=http://192.168.0.7/
 3. 提交代码
 4. 新建 Pull Request
 
-## 交流
-
-![](static/wechat.jpg)
