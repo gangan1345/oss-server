@@ -7,6 +7,14 @@
         <version>1.1</version>
     </parent>
 
+<!--打包时使用-->
+<!--    <parent>-->
+<!--        <groupId>org.springframework.boot</groupId>-->
+<!--        <artifactId>spring-boot-starter-parent</artifactId>-->
+<!--        <version>2.0.2.RELEASE</version>-->
+<!--        <relativePath/> &lt;!&ndash; lookup parent from repository &ndash;&gt;-->
+<!--    </parent>-->
+
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.xiaominfo.oss</groupId>
@@ -230,6 +238,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.6.2</version>
                 <configuration>
                     <source>1.8</source>
                     <target>1.8</target>

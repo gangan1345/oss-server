@@ -13,7 +13,13 @@
     <bytecodeTargetLevel>
       <module name="oss-server" target="1.8" />
       <module name="oss-server-parent" target="1.8" />
-      <module name="oss-server-sdk-java" target="1.7" />
+      <module name="oss-server-sdk-java" target="1.8" />
+      <module name="oss-server-spring-boot-starter" target="1.7" />
     </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="oss-server" options="" />
+    </option>
   </component>
 </project>

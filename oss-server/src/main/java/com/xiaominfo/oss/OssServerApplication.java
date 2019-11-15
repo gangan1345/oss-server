@@ -10,6 +10,7 @@ import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.core.env.Environment;
 import org.springframework.scheduling.annotation.EnableScheduling;
+import org.springframework.util.StringUtils;
 
 import java.net.InetAddress;
 import java.net.UnknownHostException;
@@ -42,6 +43,9 @@ public class OssServerApplication {
         ((Runnable) () -> {
             try {
                 String i = SpringContextUtil.getProperty("material.masterPort");
+                if (StringUtils.isEmpty(i)) {
+                    return;
+                }
                 int masterPort = Integer.parseInt(i);
                 new MasterServer().bind(masterPort);
             } catch (Exception e) {
